@@ -1,57 +1,45 @@
+//variable name
+let name = 'latios';
 
-// se crea la fucion para pedor la api de pokemon
-const catchpokemon = async (name) => {
-  let url1 = `https://pokeapi.co/api/v2/pokemon/${name}`
+//urls
+const url1 = "https://pokeapi.co/api/v2/pokemon/";
+const url2 = "https://pokeapi.co/api/v2/ability/";
 
-  try {
-    //peticion api
-    const response = await fetch(url1);
-    
-   
-    //error si la resṕueta no es exacta
-    if (!response.ok) {
-      throw new Error (`Error al obtener al pokemon: ${response.statusText}`);
-    }
-   //se parsea a json
-    const data = await response.json();
-  /*se crea el arreglo
-    let poke_array = [];
-    //se guarda arreglo con datos
+//funcion para definir al pokemon y sus habilidades y definir los pokemons hermanos que compartan esa habilidad
+async function obtainpokemon(name) {
+  //varibles a usar
+  let pokerray = [];
+  const pokeparners = []
+  //se trae la url con la datos del pokemon filtrados por nombre
+  const response = await fetch(url1+name);
+  //se pasa data a json
+  const data = await response.json();
+  //se inserta en el array inal el parametro name 
+pokerray.push({"name": data.name});
+//se crea el la varable abilities
+const abilities = [];
+//se recorre e inserta el valor de abilities en la variable
+for(let i = 0; i<data.abilities.length; i++) {
+  abilities.push(data.abilities[i].ability.name);
+}
+//se inserta el valor en la varianble de abilities
+pokerray.push({"abilites": abilities});
+// recorremos abilidades que tambien estan en la url2
+for(let i = 0; i < abilities.length; i++) {
+  const parnerAbilities = await fetch(url2+abilities[i])
+//se transforman en  json
+  const data = await parnerAbilities.json();
+  //se recorre el arreglo 2 tranformado en json y se insertan los nombres de los pokemon
 
-    for(var i = 0; i < response.length; i++){
-      var item = response[i]['name'] + ',' + response[i]["abilities"];
-      poke_array.push(item);
-      console.log(poke_array)
-
-    }*/
-
-    //extraer valores
-    const name = data.name
-    const abilities = data.abilities.map(ability =>  ability.ability.name)
-
-//se develve un objeto con los valores
-return {
-  name: name,
-  abilities: abilities,
+  for(let j = 0; j<data.pokemon.length; j++){
+  pokeparners.push(data.pokemon[j].pokemon.name)
+  }
+}//se inserta compaeros al arreglo final
+pokerray.push({ "parners": pokeparners});
+//se imprime el valor de pokearray
+console.log(pokerray)
 
 }
-
-
-
-} catch (error) {
-    console.error('Error fetching data:', error);
-  }
-
-}; 
-
-
-//se llama la funcion por un nombre en especifico
-catchpokemon('pikachu').then(data => {
-  if(data) {
-  console.log(`name: .${data.name}`);
-  console.log('abilities:', data.abilities.join(','))
-  }
-});
-
-
+//se llama a la funcion
+obtainpokemon("latios")
 
