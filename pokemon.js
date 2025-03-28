@@ -1,5 +1,4 @@
 //variable name
-let name = 'latios';
 
 //urls
 const url1 = "https://pokeapi.co/api/v2/pokemon/";
@@ -27,19 +26,19 @@ pokerray.push({"abilites": abilities});
 // recorremos abilidades que tambien estan en la url2
 for(let i = 0; i < abilities.length; i++) {
   const parnerAbilities = await fetch(url2+abilities[i])
-//se transforman en  json
+//se transforman en json
   const data = await parnerAbilities.json();
   //se recorre el arreglo 2 tranformado en json y se insertan los nombres de los pokemon
 
   for(let j = 0; j<data.pokemon.length; j++){
   pokeparners.push(data.pokemon[j].pokemon.name)
   }
-}//se inserta compaeros al arreglo final
+}//se inserta compañeros al arreglo final
 pokerray.push({ "parners": pokeparners});
 //se imprime el valor de pokearray
 console.log(pokerray)
 
 }
 //se llama a la funcion
-obtainpokemon("latios")
+obtainpokemon("Pikachu")
 
