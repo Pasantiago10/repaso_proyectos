@@ -1,43 +1,42 @@
-
 //urls
 const url1 = "https://pokeapi.co/api/v2/pokemon/";
 const url2 = "https://pokeapi.co/api/v2/ability/";
 
-//funcion para definir al pokemon y sus habilidades y definir los pokemons hermanos que compartan esa habilidad
-async function obtainpokemon(name) {
-  //varibles a usar
-  let pokerray = [];
-  const pokeparners = []
-  //se trae la url con la datos del pokemon filtrados por nombre
-  const response = await fetch(url1+name);
-  //se pasa data a json
-  const data = await response.json();
-  //se inserta en el array final el parametro name 
-pokerray.push({"name": data.name});
-//se crea el la variable abilities
-const abilities = [];
-//se recorre e inserta el valor de abilities en la variable pokearray
-for(let i = 0; i<data.abilities.length; i++) {
-  abilities.push(data.abilities[i].ability.name);
-}
-//se inserta el valor en la varianble de abilities
-pokerray.push({"abilites": abilities});
-// recorremos abilidades que tambien estan en la url2
-for(let i = 0; i < abilities.length; i++) {
-  const parnerAbilities = await fetch(url2+abilities[i])
-//se transforman en json
-  const data = await parnerAbilities.json();
-  //se recorre el arreglo 2 tranformado en json y se insertan los nombres de los pokemon
+//funcion para definir al pokemon y su habilidades
+  async function fetchData(name) {
+    ///varables a usar
+    let pokearray = [];
+    const pokeparners = []
+    //se trae la url con los datos del pokemon filtrado por nombre
 
-  for(let j = 0; j<data.pokemon.length; j++){
-  pokeparners.push(data.pokemon[j].pokemon.name)
-  }
-}//se inserta compañeros al arreglo final
-pokerray.push({ "parners": pokeparners});
-//se imprime el valor de pokearray
-console.log(pokerray)
+    const response = await fetch(url1+name); 
+  //se pasa dato a json
+    const data = await response.json(); 
+    //se intsrrta en el arrayfinal el primer parametro
 
+    pokearray.push({"name": data.name})
+    //se crea la vroable habolities;
+    const abilities = [];
+    //se recorre he inserta el valor de abilities en su variable
+    for(let i=0; i<data.abilities.length; i++){    
+        abilities.push(data.abilities[i].ability.name);
+    }
+    //se inserta abilities en pokarray
+    pokearray.push({"abilities": abilities});
+    // recorremos abilidades que tambien estan en la url2
+    for (let i = 0; i < abilities.length; i++) {
+        const partnersAbilities  = await fetch(url2+abilities[i]);
+        //se tranaforma en json
+        const data = await partnersAbilities.json();
+        //se recorre elarreglo 2 transformado en json y se insetan los valores a pokeparners 
+        for(let j=0; j<data.pokemon.length; j++){
+           pokeparners.push(data.pokemon[j].pokemon.name);
+        }
+    }//se insetan compañeros al arreglo final
+    pokearray.push({"partners": pokeparners});
+    //se imprime resultados
+    console.log(pokearray);
 }
-//se llama a la funcion
-obtainpokemon("Pikachu")
+//se llama la funcion con el nombre del pokemon
+fetchData("Arceus");
 
