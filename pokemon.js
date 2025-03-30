@@ -1,4 +1,3 @@
-//variable name
 
 //urls
 const url1 = "https://pokeapi.co/api/v2/pokemon/";
@@ -13,11 +12,11 @@ async function obtainpokemon(name) {
   const response = await fetch(url1+name);
   //se pasa data a json
   const data = await response.json();
-  //se inserta en el array inal el parametro name 
+  //se inserta en el array final el parametro name 
 pokerray.push({"name": data.name});
-//se crea el la varable abilities
+//se crea el la variable abilities
 const abilities = [];
-//se recorre e inserta el valor de abilities en la variable
+//se recorre e inserta el valor de abilities en la variable pokearray
 for(let i = 0; i<data.abilities.length; i++) {
   abilities.push(data.abilities[i].ability.name);
 }
