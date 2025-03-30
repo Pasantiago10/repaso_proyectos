@@ -5,36 +5,35 @@ async function obtainmovie(t, y, plot, type) {
   // arreglo vacio
   let mymovie = [];
 
-  //url base
+  //url inicial
   let urlb = url;
 
-  //se define el primer parámetro que es título
+  //primer parametro que es titulo
   if (t) {
     urlb += `&t=${encodeURIComponent(t)}`;
   }
 
-//
+//seundo parametro que es año
   if (y) {
     urlb += `&y=${encodeURIComponent(y)}`;
   }
 
-  //se agrega plot si está definido
+//tercr parametro que es plot
   if (plot) {
     urlb += `&plot=${encodeURIComponent(plot)}`;
   }
-
-  //se agrega type si está definido
+//ltimo parametro que es type
   if (type) {
     urlb += `&type=${encodeURIComponent(type)}`;
   }
 
-  //solicitud a la api con la url filtrafa
+  //solicitud a la api con la url filtrada
   const response = await fetch(urlb);
   //se pasa la respuesta a json
   const data = await response.json();
  
   
-    // Se agrega la película al arreglo "mymovie"
+    // Se agrega lo obtenido a mymovie
     mymovie.push({
       "Title": data.Title,
       "Year": data.Year,
@@ -45,9 +44,9 @@ async function obtainmovie(t, y, plot, type) {
     });
   
 
-  // Imprime el arreglo con la película obtenida
+  // Imprimmir el resultado obtenido
   console.log(mymovie);
 }
 
-// Llamada a la función con un título
+//se llma la funcion con los parametros
 obtainmovie('', '2004', '', '');
