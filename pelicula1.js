@@ -7,7 +7,7 @@ async function obtainmovie(t,y) {
 
 //segundo se agrega url con el parametro obligatorio titulo
 let urlb  = `${url}&t=${(t)})`;
-//se deja como no requerido los otros paametros para agregarlos en caso se inserten
+//se deja como no requerido los otros parametros para agregarlos en caso se inserten
 if(y) 
    {urlb += `&y=${y}`
 
