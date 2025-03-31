@@ -10,7 +10,7 @@ async function obtainmovies(t,y,plot,type) {
  
 //segundo se agrega url con el parametro obligatorio titulo
  let urlb  = `${url}&t=${(t)})`;
- //se deja como no requerido los otros paametros para agregaros en caso se inserten
+ //se deja como no requerido los otros paametros para agregarlos en caso se inserten
  if(y) 
     {urlb += `&y=${y}`
  
@@ -23,7 +23,7 @@ async function obtainmovies(t,y,plot,type) {
  if(type) { urlb += `&type=${type}`;
 console.log(urlb)
  }
- //se trae la url con los parametros no reqeridos y los cionales segun sea el caso
+ //se trae la url con los parametros no reqeridos y los parametros segun sea el caso
  const response = await fetch(urlb);
 
 

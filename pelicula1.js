@@ -7,7 +7,7 @@ async function obtainmovie(t,y) {
 
 //segundo se agrega url con el parametro obligatorio titulo
 let urlb  = `${url}&t=${(t)})`;
-//se deja como no requerido los otros paametros para agregaros en caso se inserten
+//se deja como no requerido los otros paametros para agregarlos en caso se inserten
 if(y) 
    {urlb += `&y=${y}`
 
@@ -19,7 +19,7 @@ if(y)
   const data = await response.json();
  
   
-    // Se agrega lo obtenido a mymovie
+    // Se agrega lo obtenido a mymovieen un solo push
     movieandyear.push({
       "Title": data.Title,
       "Year": data.Year,    
