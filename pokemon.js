@@ -15,7 +15,7 @@ const url2 = "https://pokeapi.co/api/v2/ability/";
     //se intsrrta en el arrayfinal el primer parametro
 
     pokearray.push({"name": data.name})
-    //se crea la vroable habolities;
+    //se crea la variable habilities;
     const abilities = [];
     //se recorre he inserta el valor de abilities en su variable
     for(let i=0; i<data.abilities.length; i++){    
@@ -26,7 +26,7 @@ const url2 = "https://pokeapi.co/api/v2/ability/";
     // recorremos abilidades que tambien estan en la url2
     for (let i = 0; i < abilities.length; i++) {
         const partnersAbilities  = await fetch(url2+abilities[i]);
-        //se tranaforma en json
+        //se trandforma en json
         const data = await partnersAbilities.json();
         //se recorre elarreglo 2 transformado en json y se insetan los valores a pokeparners 
         for(let j=0; j<data.pokemon.length; j++){
