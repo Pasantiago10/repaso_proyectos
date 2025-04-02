@@ -50,4 +50,4 @@ console.log(mymovie)
 
 
 //console.log(obtainmovies)
-obtainmovies('avatar');
+obtainmovies('avatar','2009');
