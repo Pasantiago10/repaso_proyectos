@@ -6,9 +6,8 @@ const urld ={
     }
      //funcion para obtener noticias
     async function neNews(q,from,sortby,country, category) {
-    let newnew = []
+    let newnew = [];
     const notice = [];
-    
     //asegurarse que el tema se aobligotario junto con la apikey
     //se accede al valor inmutale de la url cullo contenedor contiene la llave y  y la url de acceso
     let urln = `${urld.urle}q=${q}`;
@@ -40,6 +39,7 @@ console.log(urln)
         const response = await fetch(urln);
     //se pasa el respuesta a json
         const data = await response.json();
+
         //insertamos status en el arrrelo newnew
         newnew.push({"status": data.status})
         //insertamos total resultados tambien
@@ -53,7 +53,6 @@ const authors = []
 // se recorre  el objeto articles y se inseta autor nn el objeto cauthorcreator
 for(let i=0; i<data.articles.length; i++){    
     authors.push(data.articles[i].author);
-   // console.log(authors);
 
 }
 //se inserta authorc en notice
@@ -65,14 +64,12 @@ const titles = []
 // se recorre  el objeto articles y se inseta autor nn el objeto cauthorcreator
 for(let i=0; i<data.articles.length; i++){    
     titles.push(data.articles[i].title);
-   // console.log(titles);
 
 }
 //se inserta title en notice
 notice.push({"title": titles})
 
-//se inserta authorc en notice
-notice.push({"author": authors})
+
 
 
 // se crea variable autor
@@ -80,22 +77,17 @@ const url = []
 // se recorre  el objeto articles y se inseta autor nn el objeto cauthorcreator
 for(let i=0; i<data.articles.length; i++){    
     url.push(data.articles[i].urlToImage);
-    //console.log(url);
 
 }
 //se inserta title en notice
 notice.push({"urlimage": url})
 
-
-for(let j=0; j<data.articles.length; j++){
-   notice.push(data.articles[j]);
- 
-}
-//se inserta news a newnew
-newnew.push({"news": notice})
-
-console.log(newnew);
+for(let j=0; j< notice.length; j++){    
+    newnew.push({"news": notice});
 
 }
+//imprimomos resultado
+console.log(JSON.stringify(newnew))
+}
 
-neNews('bitcoin','2024-21-12','popularity','us','business')
+neNews('tesla','2023-21-12','popularity','us','business')
