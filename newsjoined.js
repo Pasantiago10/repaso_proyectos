@@ -8,10 +8,11 @@ const urld ={
     async function neNews(q,from,sortby,country, category) {
         //se crean las variables new new y note para combinarlas al final
     let newnew = [];
-    const note = [];
+    const notes = [];
     //asegurarse que el tema se aobligotario junto con la apikey
     //se accede al valor inmutale de la url cullo contenedor contiene la llave y  y la url de acceso
     let urln = `${urld.urle}q=${q}`;
+//note pequeño dentro del for y mas grande tambien
 
     // se agregan valores no obligatorios
     if(from) 
@@ -48,44 +49,22 @@ console.log(urln)
 //se crea la variable articles;
 //se recorre he inserta el valor de articles en su variable
 
-// se crea variable autor
-const authors = []
-// se recorre  el objeto articles y se inserta autor en el objeto cauthorcreator
+// se crea variable anote
+const note = []
+// se recorre  el objeto articles y se inserta los objetos en note y luego el arreglo notes
 for(let i=0; i<data.articles.length; i++){    
-    authors.push(data.articles[i].author);
+    note.push(data.articles[i].author);
+    note.push(data.articles[i].title);
+    note.push(data.articles[i].url);
+    notes.push({"news":note});
 
 }
-//se inserta authorc en note
-note.push({"author": authors})
-//arreglo noticias  grnde con noticia
+//note pequeño dentro del for y mas grande tambien
 
 
-// se crea variable autor
-const titles = []
-// se recorre  el objeto articles y se inseta autor nn el objeto cauthorcreator
-for(let i=0; i<data.articles.length; i++){    
-    titles.push(data.articles[i].title);
-
-}
-//se inserta title en note
-note.push({"title": titles})
-
-
-
-
-// se crea variable autor
-const url = []
-// se recorre el objeto articles y se inseta autor en el objeto cauthorcreator
-for(let i=0; i<data.articles.length; i++){    
-    url.push(data.articles[i].urlToImage);
-
-}
-//se inserta title en note
-note.push({"urlimage": url})
-
-//se recorre note y se inserta en newnew
-for(let j=0; j< note.length; j++){    
-    newnew.push({"news": note});
+//se recorre notes y se inserta en newnew
+for(let j=0; j< notes.length; j++){    
+    newnew.push({"news": notes});
 
 }
 //imprimomos resultado
