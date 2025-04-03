@@ -6,8 +6,9 @@ const urld ={
     }
      //funcion para obtener noticias
     async function neNews(q,from,sortby,country, category) {
+        //se crean las variables new new y note para combinarlas al final
     let newnew = [];
-    const notice = [];
+    const note = [];
     //asegurarse que el tema se aobligotario junto con la apikey
     //se accede al valor inmutale de la url cullo contenedor contiene la llave y  y la url de acceso
     let urln = `${urld.urle}q=${q}`;
@@ -44,7 +45,6 @@ console.log(urln)
         newnew.push({"status": data.status})
         //insertamos total resultados tambien
     newnew.push({"totalResults": data.totalResults})
-// console.log(newnew)
 //se crea la variable articles;
 //se recorre he inserta el valor de articles en su variable
 
@@ -55,8 +55,8 @@ for(let i=0; i<data.articles.length; i++){
     authors.push(data.articles[i].author);
 
 }
-//se inserta authorc en notice
-notice.push({"author": authors})
+//se inserta authorc en note
+note.push({"author": authors})
 
 
 // se crea variable autor
@@ -66,24 +66,25 @@ for(let i=0; i<data.articles.length; i++){
     titles.push(data.articles[i].title);
 
 }
-//se inserta title en notice
-notice.push({"title": titles})
+//se inserta title en note
+note.push({"title": titles})
 
 
 
 
 // se crea variable autor
 const url = []
-// se recorre  el objeto articles y se inseta autor nn el objeto cauthorcreator
+// se recorre el objeto articles y se inseta autor en el objeto cauthorcreator
 for(let i=0; i<data.articles.length; i++){    
     url.push(data.articles[i].urlToImage);
 
 }
-//se inserta title en notice
-notice.push({"urlimage": url})
+//se inserta title en note
+note.push({"urlimage": url})
 
-for(let j=0; j< notice.length; j++){    
-    newnew.push({"news": notice});
+//se recorre note y se inserta en newnew
+for(let j=0; j< note.length; j++){    
+    newnew.push({"news": note});
 
 }
 //imprimomos resultado
