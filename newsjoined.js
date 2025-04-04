@@ -52,21 +52,18 @@ console.log(urln)
 // se crea variable anote
 const note = []
 // se recorre  el objeto articles y se inserta los objetos en note y luego el arreglo notes
+//dentro del for se crea la variable notes tabien se inserta note en notes
 for(let i=0; i<data.articles.length; i++){    
     note.push(data.articles[i].author);
     note.push(data.articles[i].title);
     note.push(data.articles[i].url);
     notes.push({"news":note});
-
 }
-//note pequeño dentro del for y mas grande tambien
 
 
 //se recorre notes y se inserta en newnew
-for(let j=0; j< notes.length; j++){    
     newnew.push({"news": notes});
 
-}
 //imprimomos resultado
 console.log(JSON.stringify(newnew))
 }
