@@ -10,7 +10,7 @@ const urld ={
     let newnew = [];
     const note = [];
     //asegurarse que el tema se aobligotario junto con la apikey
-    //se accede al valor inmutale de la url cullo contenedor contiene la llave y  y la url de acceso
+    //se accede al valor inmutable de la url cullo contenedor contiene la llave y  y la url de acceso
     let urln = `${urld.urle}q=${q}`;
 
     // se agregan valores no obligatorios
