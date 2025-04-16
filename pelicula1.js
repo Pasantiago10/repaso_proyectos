@@ -28,7 +28,7 @@ if(y)
 
   // Imprimmir el resultado obtenido
   console.log(movieandyear);
-}
+  }
 
 //se llma la funcion con los parametrosque quieras
 obtainmovie( 'raya', '2021');
